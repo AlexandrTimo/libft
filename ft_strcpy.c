@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 17:45:31 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/02/27 09:41:42 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/02/25 20:44:24 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/02/26 10:09:52 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	unsigned int i;
+	int i;
 
-	i = -1;
-	if (dst == NULL && src == NULL && n)
-		return (NULL);
-	while (++i < n)
+	i = 0;
+	while (src[i] != '\0')
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		dst[i] = src[i];
+		i++;
 	}
+	dst[i] = '\0';
 	return (dst);
 }

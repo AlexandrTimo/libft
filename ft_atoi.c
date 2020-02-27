@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 17:45:31 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/02/27 09:41:42 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/02/27 09:58:11 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/02/27 09:59:41 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_atoi(const char *str);
+
+int		main(void)
 {
-	unsigned int i;
 
-	i = -1;
-	if (dst == NULL && src == NULL && n)
-		return (NULL);
-	while (++i < n)
-	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-	}
-	return (dst);
+	return (0);
 }

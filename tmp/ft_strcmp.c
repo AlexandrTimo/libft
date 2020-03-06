@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 09:58:11 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/02/29 10:50:24 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/02/23 10:01:08 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/02/23 10:12:42 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
-{
-	int num;
-	int sign;
-	int i;
+/*
+** Compare strings
+*/
 
-	num = 0;
-	sign = 1;
+int		ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
 	i = 0;
-	while (str[i] <= 32 && str[i] >= 127)
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = num * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * num);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int		main()
+{
+	int i;
+	int *p;
+
+	i = 5;
+	p = (int*)malloc(sizeof(int));
+	*p = 10;
+	printf("%p\n", &ft_strcmp);
+	printf("%p\n", &i);
+	printf("%p\n", p);
+	printf("%p\n", &(*p));	
+
+	return (0);
 }

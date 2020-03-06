@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 09:58:11 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/02/29 10:50:24 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/01 14:12:33 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/01 15:08:06 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int		ft_atoi(const char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	int num;
-	int sign;
 	int i;
+	char *p;
 
-	num = 0;
-	sign = 1;
 	i = 0;
-	while (str[i] <= 32 && str[i] >= 127)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	p = (char *)s;
+
+	while (p[i] != '\0')
 	{
-		if (str[i] == '-')
-			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (p[i] != c)
 	{
-		num = num * 10 + (str[i] - '0');
-		i++;
+		i--;
+		if (p[i] == c)
+		return (p + i);
 	}
-	return (sign * num);
+	return (NULL);
+}
+
+int	main(void)
+{
+	char str[] = "Winner";
+	int chr = 'n';
+	printf("Orig ver - %s\n", strrchr(str, chr));
+	printf("Mine ver - %s\n", ft_strrchr(str, chr));
+	return(0);
 }

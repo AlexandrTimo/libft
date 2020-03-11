@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:17:04 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/09 19:55:00 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/08 11:40:51 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/08 11:44:53 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <stdio.h>
+#include <unistd.h>
 
-void	ft_memdel(void **ap)
+void    ft_putendl_fd(char const *s, int fd)
 {
-	if (*ap && ap)	
-	free(*ap);
-	*ap = NULL;
+    int i;
+
+    i = 0;
+    while (s[i] != '\0')
+    i++;
+    write(fd, s, i);
+    write(1, "\n", 1);
 }
 
-int		main(void)
+int     main(void)
 {
-	void *str;
-
-	str = "Hello";
-	printf("%s\n", ft_memdel(&str));
-	return (0);
+    ft_putendl_fd("Ultra festival", 1);
+    return (0);
 }

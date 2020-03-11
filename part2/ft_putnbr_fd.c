@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:17:04 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/09 19:55:00 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/09 12:42:42 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/09 13:45:34 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include <unistd.h>
 #include <stdio.h>
 
-void	ft_memdel(void **ap)
+void    ft_putchar(char c)
 {
-	if (*ap && ap)	
-	free(*ap);
-	*ap = NULL;
+    write(1, &c, 1);
 }
 
-int		main(void)
+void    ft_putnbr_fd(int n, int fd)
 {
-	void *str;
+    if (n < 0)
+    {
+        n = -n;
+        ft_putchar('-');
+    }
+    if (n < 10 && n >= 0)
+        ft_putchar(n + '0');
+    else
+    {
+        ft_putnbr_fd(n / 10, fd);
+        ft_putnbr_fd(n % 10, fd);
+    }
+}
 
-	str = "Hello";
-	printf("%s\n", ft_memdel(&str));
-	return (0);
+int     main(void)
+{
+    ft_putnbr_fd(656, 1);
+    return (0);
 }

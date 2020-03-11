@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:17:04 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/09 19:55:00 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/08 11:31:46 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/08 11:38:02 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <stdio.h>
+#include <unistd.h>
 
-void	ft_memdel(void **ap)
+void    ft_putstr_fd(char const *s, int fd)
 {
-	if (*ap && ap)	
-	free(*ap);
-	*ap = NULL;
+    int i;
+    
+    i = 0;
+    while (s[i] != '\0')
+    i++;
+    write(fd, s, i);
 }
 
-int		main(void)
+int     main(void)
 {
-	void *str;
-
-	str = "Hello";
-	printf("%s\n", ft_memdel(&str));
-	return (0);
+    ft_putstr_fd("TeslaS", 1);
+    return (0);
 }

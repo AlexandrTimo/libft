@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:17:04 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/09 19:55:00 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/08 11:14:35 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/08 11:29:57 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <stdio.h>
+#include <unistd.h>
 
-void	ft_memdel(void **ap)
+void    ft_putchar_fd(char c, int fd)
 {
-	if (*ap && ap)	
-	free(*ap);
-	*ap = NULL;
+    write(fd, &c, 1);
 }
 
-int		main(void)
+int     main(void)
 {
-	void *str;
-
-	str = "Hello";
-	printf("%s\n", ft_memdel(&str));
-	return (0);
+    ft_putchar_fd('L', 1);
+    return (0);
 }

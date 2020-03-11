@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:17:04 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/09 19:55:00 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/06 13:36:21 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/06 14:13:25 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include <stdio.h>
 
-void	ft_memdel(void **ap)
+char    *ft_strmap(char const *s,char(*f)(char))
 {
-	if (*ap && ap)	
-	free(*ap);
-	*ap = NULL;
+    int i;
+    int len;
+    char *s2;
+
+    i = 0;
+    len = ft_strlen(s);
+    s2 = (char *)malloc(sizeof(char) * len + 1);
+    while (i < len)
+    {
+        s2[i] = f(s[i]);
+        i++;
+    }
+    return (s2);
 }
 
-int		main(void)
+int     main(int argc, char **argv)
 {
-	void *str;
-
-	str = "Hello";
-	printf("%s\n", ft_memdel(&str));
-	return (0);
+    if (argc == 1)
+    printf("%s\n", ft_strmap(argv[1], ft_strdup(argv[1])));
+    return (0);
 }

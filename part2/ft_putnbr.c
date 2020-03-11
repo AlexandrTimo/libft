@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:17:04 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/09 19:55:00 by atimoshe         ###   ########.fr       */
+/*   Created: 2020/03/07 20:46:38 by atimoshe          #+#    #+#             */
+/*   Updated: 2020/03/11 10:56:05 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-#include <stdio.h>
 
-void	ft_memdel(void **ap)
+void ft_putnbr(int n)
 {
-	if (*ap && ap)	
-	free(*ap);
-	*ap = NULL;
-}
-
-int		main(void)
-{
-	void *str;
-
-	str = "Hello";
-	printf("%s\n", ft_memdel(&str));
-	return (0);
+	if (n == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putchar('2');
+		n = 147483648;
+	}
+    if (n < 0)
+    {
+        n = -n;
+        ft_putchar('-');
+    }
+    if (n < 10 && n >= 0)
+        ft_putchar(n + '0');
+    else 
+    {
+        ft_putnbr(n / 10);
+        ft_putnbr(n % 10);
+    }
 }

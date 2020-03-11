@@ -6,7 +6,7 @@
 /*   By: atimoshe <atimoshe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 20:57:10 by atimoshe          #+#    #+#             */
-/*   Updated: 2020/03/11 15:03:47 by atimoshe         ###   ########.fr       */
+/*   Updated: 2020/03/11 16:19:17 by atimoshe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ static int     ft_int_size(int n)
     int count;
     
     count = 0;
+    if (n < 0)
+    {
+        n = n * - 1;
+        count++;
+    }
+    if (n == 0)
+        count++;
     while (n != 0)
     {
         n = n / 10;
@@ -65,24 +72,34 @@ static int     ft_int_size(int n)
 char    *ft_itoa(int n)
 {
     char *str;
-    char sign;
-    int sign_len;
     int i;
+    int j;
     
-    sign_len = 0;
-    i = 0;
+    j = 0;
+    i = ft_int_size(n);
+    if (!(str = (char *)malloc(sizeof(char) * i + 1)))
+        return (NULL);
+    str[i] = '\0';
+    if (n == 0)
+        str[j] = '0';
     if (n < 0)
     {
-        sign = '-';
-        sign_len++;
+        str[j] = '-';
+        n = n * -1;
+        j++;
     }
-    if (!(str = (char *)malloc(sizeof(char) * (ft_int_size(n) + sign_len) + 1)))
-        return (NULL);
-    return (ft_number(str, n, ft_int_size(n)));
+    if (n > 0)
+    {
+        
+        &str[j] = ft_number(str, n, ft_int_size(n));
+        return (str);
+    }
+    else
+        return (0);
 }
 
 int     main(void)
 {
-    printf ("%s\n", ft_itoa(-56));
+    printf ("%s\n", ft_itoa(-1));
     return (0);
 }
